@@ -9,7 +9,7 @@ Lollypop iOS SDK supports multiple methods for installing the library in a proje
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build AFNetworking 3.0.0+.
+> CocoaPods 0.39.0+ is required to build lollypop.
 
 #### Podfile
 
