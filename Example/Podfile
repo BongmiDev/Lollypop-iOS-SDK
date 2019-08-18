@@ -6,7 +6,7 @@ install! 'cocoapods', :warn_for_multiple_pod_sources => false, :deterministic_uu
 platform :ios, '8.0'
 
 target 'LollypopSDK_Example' do
-#  pod 'LollypopSDK', :path => '../'
+# pod 'LollypopSDK', :path => '../'
   pod 'LollypopSDK', :path => '../LollypopSDK-0.1.9/'
 #  pod 'BMBaseToolsLib'
 #  pod 'BMUserBusinessLib'
