@@ -1,11 +1,38 @@
-### LollypopSDK 使用文档介绍
+## LollypopSDK Instruction
 
-####如何引用LollypopSDK
+### Installation
+Lollypop iOS SDK supports multiple methods for installing the library in a project.
+#### Installation with CocoaPods
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AFNetworking in your projects. See the ["Getting Started" guide for more information](https://github.com/AFNetworking/AFNetworking/wiki/Getting-Started-with-AFNetworking). You can install it with the following command:
 
-在项目工程中添加LollypopSDK.framework的时候有以下几个注意点。
+```bash
+$ gem install cocoapods
+```
 
-1. LollypopSDK的使用同时需要包含以下几个系统库:
+> CocoaPods 0.39.0+ is required to build AFNetworking 3.0.0+.
 
+#### Podfile
+
+To integrate Lollypop iOS SDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target 'TargetName' do
+pod 'lollypop', '0.1.9'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+#### Installation manually
+
+1. Add LollypopSDK.framework to your project.
+2. Add required framework and library below:
 	* **libsqlite3.tbd**
 	* **Fundation.framework**
 	* **CoreBluetooth.framework**
@@ -13,85 +40,34 @@
 	* **MobileCoreServices.framework**
 	* **CoreGraphices.framework**
 	* **Security.framework**
+	
+No matter which method you are using, you need to add bluetooth privacy manually to info.plist.
 
-2. 由于LollypopSDK中使用了Bluetooth模块，所以需要在App的Capabilities的Background Modes中勾选Use Bluetooth LE accessories。
-
-3. 为了防止第三方库不能使用Category，需要在Build Settings中的Other Linker Flags里添加-ObjC
-
-####LollypopSDK结构介绍
-
-LollypopDeviceInfo包含了关于设备信息
-
- * **deviceId** 设备的UUID
- * **batteryLevel** 电量显示
- * **softwareVersion** 软件版本号
- * **hardwareVersion** 硬件版本号
-
-LollypopTemperatureInfo包含了关于获取的体温信息
-
- * **temperature** 体温数值（举例：3676代表36.76摄氏度）
- * **timestamp** 测温的时间戳
- * **isAccurateResult** 是否是实测值（true代表实测，false代表预测）
-
-LollypopSDK包含了一些SDK的操作方法
-
- * +(void)setApplicationId:(NSString *)applicationId;
+### Usage
+  **Init with appkey**
+  ```Objective-c
+  - (void)setAppKey:(NSString *)appKey;
+```
  
-    **注册AppKey给服务器**
- 
- * +(void)registerWithPhoneNo:(NSString *)phoneNo
-                     password:(NSString *)password
-                     callback:(LollypopCallback)callback;
-                     
-  **注册用户信息，注册成功后会同时登录**
+ **Set delegate and implement it**
+ ```Objective-c
+  [LollypopSDK sharedInstance].delegate = self;
   
- * -(void)loginWithPhoneNo:(NSString *)phoneNo
-                  password:(NSString *)password
-                  callback:(LollypopCallback)callback;
-   
-   **登录用户**
-   
- * -(BOOL)isLogin;
- 
-   **判断用户是否登录**
-   
- * -(NSError *)logout;
+  - (void)lollypopDidReceiveTemperature:(LollypopTemperature *)temperature;
 
-   **注销用户**
-   
- * -(void)conntectDeviceWithCallBack:(LollypopCallback)callback;
+  - (void)lollypopDidReceiveHeightWeight:(LollypopHeightWeight *)hwData;
+```
+  **registher account for user**
   
-   **连接Device，需要先登录用户**
-   
- * -(void)disconntectDeviceWithCallBack:(LollypopCallback)callback;
-   
-   **断开设备，需要先登录用户**
-   
- * -(void)getDeviceInfoWithCallBack:(LollypopDeviceInfoNotifier)callback;
-   
-   **获取设备信息，需要先登录用户**
-   
- * -(void)getTemperatureWithTemperatureNotifier:(LollypopTemperatureNotifier)temperatureNotifier
-                                       callback:(LollypopCallback)callback;
-                                       
-   **监听设备温度，需要先登录用户**  
-   
-   
-   
-####备注
-
-**操作流程 ： 登录／注册 -> 连接设备 -> 注册测温监听／获取设备信息 -> 测量温度 -> 收到温度 -> 断开设备 -> 退出登录**
-
-**AppKey : gqqmgtHBgapew6ke**
-
-**cn.lollypop.err.ble Error**
-
-1. ScanTimeoutFailed = 1
-2. ConnectTimeoutFailed = 2
-3. DisconnectTimeoutFailed = 3
-4. CharacteristicNotFound = 4
-5. BluetoothNotReady = 5
-6. OperationInProgress = 6
-7. BLENotSupported = 7
-8. DeviceNotBinded = 8
-9. UnknownError = 9
+  ```Objective-c
+  - (void)registerWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
+```
+  **login account**
+  
+  ```Objective-c
+  - (void)loginWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
+```
+**Connect device (need to login first)**
+  ```Objective-c
+  - (void)conntectDevice:(LollypopDeviceType)deviceType callback:(LollypopCallback)callback;
+```
