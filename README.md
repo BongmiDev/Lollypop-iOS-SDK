@@ -40,6 +40,7 @@ $ pod install
 	* **MobileCoreServices.framework**
 	* **CoreGraphices.framework**
 	* **Security.framework**
+3. Add Other Linker Flags: $(inherited) -ObjC -framework "LollypopSDK"
 	
 No matter which method you are using, you need to add bluetooth privacy manually to info.plist.
 
