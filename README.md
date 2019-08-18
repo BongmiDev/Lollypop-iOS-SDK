@@ -58,7 +58,7 @@ No matter which method you are using, you need to add bluetooth privacy manually
 
   - (void)lollypopDidReceiveHeightWeight:(LollypopHeightWeight *)hwData;
 ```
-  **registher account for user**
+  **register account for user**
   
   ```Objective-c
   - (void)registerWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
