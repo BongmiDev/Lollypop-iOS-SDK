@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.authors = {"Aren"=>"renchonghui@bongmi.com"}
   s.homepage = "https://github.com/BongmiDev/Lollypop-iOS-SDK"
   s.description = "lollypop sdk for iOS"
-  s.source = { :http => "https://github.com/BongmiDev/Lollypop-iOS-SDK" }
+  s.source       = { :http => "https://github.com/BongmiDev/Lollypop-iOS-SDK", :tag => s.version.to_s }
 
   s.frameworks = 'SystemConfiguration','CoreBluetooth','MobileCoreServices','CoreTelephony'
   s.library = 'sqlite3'
