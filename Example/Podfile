@@ -1,24 +1,13 @@
 use_frameworks!
 
-source 'git@git.bongmi.cn:bongmi/cocoapod-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 install! 'cocoapods', :warn_for_multiple_pod_sources => false, :deterministic_uuids => false
 platform :ios, '8.0'
 
 target 'LollypopSDK_Example' do
-# pod 'LollypopSDK', :path => '../'
-  pod 'LollypopSDK', :path => '../LollypopSDK-0.1.9/'
-#  pod 'BMBaseToolsLib'
-#  pod 'BMUserBusinessLib'
-#  pod 'BMDeviceBusinessLib'
-#  pod 'BMBaseNetworkLib'
-#  pod 'BMBaseStorageLib'
-
-#  pod 'BMBaseToolsLib', :path => "../../git-subrepo/common/base/lollypop-client-ios-base-tools"
-#  pod 'BMUserBusinessLib', :path => "../../git-subrepo/common/control/lollypop-client-ios-business-user"
-#  pod 'BMDeviceBusinessLib', :path => "../../git-subrepo/common/control/lollypop-client-ios-business-device"
-#  pod 'BMBaseNetworkLib', :path => "../../git-subrepo/common/sys/lollypop-client-ios-base-network"
-#  pod 'BMBaseStorageLib', :path => "../../git-subrepo/common/sys/lollypop-client-ios-base-storage"
+  
+  pod 'lollypop', '0.2.0'
+  
   target 'LollypopSDK_Tests' do
     inherit! :search_paths
   end
