@@ -3,13 +3,13 @@
 ### Installation
 Lollypop iOS SDK supports multiple methods for installing the library in a project.
 #### Installation with CocoaPods
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AFNetworking in your projects. See the ["Getting Started" guide for more information](https://github.com/AFNetworking/AFNetworking/wiki/Getting-Started-with-AFNetworking). You can install it with the following command:
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like lollypop in your projects. See the ["Getting Started" guide for more information](https://github.com/AFNetworking/AFNetworking/wiki/Getting-Started-with-AFNetworking). You can install it with the following command:
 
 ```bash
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build AFNetworking 3.0.0+.
+> CocoaPods 0.39.0+ is required to build lollypop.
 
 #### Podfile
 
@@ -20,7 +20,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'lollypop', '0.1.9'
+pod 'lollypop', '0.2.0'
 end
 ```
 
@@ -58,7 +58,7 @@ No matter which method you are using, you need to add bluetooth privacy manually
 
   - (void)lollypopDidReceiveHeightWeight:(LollypopHeightWeight *)hwData;
 ```
-  **registher account for user**
+  **register account for user**
   
   ```Objective-c
   - (void)registerWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
