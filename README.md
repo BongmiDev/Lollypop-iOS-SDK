@@ -17,10 +17,10 @@ To integrate Lollypop iOS SDK into your Xcode project using CocoaPods, specify i
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'TargetName' do
-pod 'lollypop', '0.2.0'
+	pod 'lollypop', '0.2.1'
 end
 ```
 
@@ -42,14 +42,15 @@ $ pod install
 	* **Security.framework**
 3. Add Other Linker Flags: $(inherited) -ObjC -framework "LollypopSDK"
 	
+
 No matter which method you are using, you need to add bluetooth privacy manually to info.plist.
 
 ### Usage
   **Init with appkey**
   ```Objective-c
   - (void)setAppKey:(NSString *)appKey;
-```
- 
+  ```
+
  **Set delegate and implement it**
  ```Objective-c
   [LollypopSDK sharedInstance].delegate = self;
@@ -57,18 +58,18 @@ No matter which method you are using, you need to add bluetooth privacy manually
   - (void)lollypopDidReceiveTemperature:(LollypopTemperature *)temperature;
 
   - (void)lollypopDidReceiveHeightWeight:(LollypopHeightWeight *)hwData;
-```
+ ```
   **register account for user**
-  
+
   ```Objective-c
   - (void)registerWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
-```
+  ```
   **login account**
-  
+
   ```Objective-c
   - (void)loginWithPhoneNo:(NSString *)phoneNo password:(NSString *)password callback:(LollypopCallback)callback;
-```
+  ```
 **Connect device (need to login first)**
   ```Objective-c
   - (void)conntectDevice:(LollypopDeviceType)deviceType callback:(LollypopCallback)callback;
-```
+  ```
