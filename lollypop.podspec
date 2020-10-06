@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "lollypop"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.summary = "A short description of lollypop."
   s.license = {"type"=>"Commercial", :text => "Copyright (C) 2019 Bongmi, Inc. All rights reserved."}
   s.authors = {"Aren"=>"renchonghui@bongmi.com"}
