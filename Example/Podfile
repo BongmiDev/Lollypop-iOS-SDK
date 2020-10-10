@@ -6,7 +6,7 @@ platform :ios, '8.0'
 
 target 'LollypopSDK_Example' do
   
-  pod 'lollypop', '0.2.0'
+  pod 'lollypop', '0.2.1'
   
   target 'LollypopSDK_Tests' do
     inherit! :search_paths

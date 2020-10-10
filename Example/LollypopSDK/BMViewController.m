@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.deviceType = kLollypopDeviceTypeGrowp;
+  self.deviceType = kLollypopDeviceTypeFemometer;
   [[LollypopSDK sharedInstance] setAppKey:@"KKunpAnyEUJzNeEG"];
   [LollypopSDK sharedInstance].delegate = self;
   [[LollypopSDK sharedInstance] loginWithPhoneNo:@"18267136773" password:@"111111bm" callback:^(id  _Nullable result, NSError * _Nullable error) {
